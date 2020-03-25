@@ -37,6 +37,16 @@ The tutorial of using Trimmomatic can be found at:
 
 For more details about using Trimmomatic: `java -jar Trimmomatic-0.39.jar -h`
 
+Usage of Trimmomatic (Paired End): `java -jar trimmomatic-0.39.jar PE -phred33 /data/notebook/Jerry/Test/Input/Data20200323/V300035135_L03_531_1.clean.fq.gz /data/notebook/Jerry/Test/Input/Data20200323/V300035135_L03_531_2.clean.fq.gz /data/notebook/Jerry/Test/Reference/Output_V300035135_L03_531_1_paired.clean.fq.gz /data/notebook/Jerry/Test/Reference/Output_V300035135_L03_531_1_unpaired.clean.fq.gz /data/notebook/Jerry/Test/Reference/Output_V300035135_L03_531_2_paired.clean.fq.gz /data/notebook/Jerry/Test/Reference/Output_V300035135_L03_531_2_unpaired.clean.fq.gz /data/notebook/Jerry/Tools/Trimmomatic-0.39/adapters/ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36`
+
+Output_paired: Usable data
+
+Output_unpaired: Removed adapters, leading low quality, and trailing low quality
+
+Usage of Trimmomatic (Single End): `java -jar trimmomatic-0.35.jar SE -phred33 input.fq.gz output.fq.gz ILLUMINACLIP:TruSeq3-SE:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36`
+
+After the execution, we could obtain paired data for next step.
+
 ## Read Alignment
 ### BWA-mem
 Download Page:
