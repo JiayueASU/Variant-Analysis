@@ -33,6 +33,7 @@ Unzip Trimmomatic: `unzip Trimmomatic-0.39.zip`
 
 The tutorial of using Trimmomatic can be found at: 
 <http://www.bio-info-trainee.com/1958.html>
+
 <http://www.usadellab.org/cms/?page=trimmomatic>
 
 For more details about using Trimmomatic: `java -jar Trimmomatic-0.39.jar -h`
@@ -53,6 +54,12 @@ Download Page:
 <https://sourceforge.net/projects/bio-bwa/files/>
 
 Unzip bwa-0.7.17.tar.bz2: `tar -jxvf bwa-0.7.17.tar.bz2`
+
+Install bwa:`cd bwa-0.7.17` `make`
+
+After `make`, execute bwa file: `./bwa`
+
+Set environmental variables: `export PATH=$PATH:/data/notebook/Jerry/Tools/bwa-0.7.17/`
 
 
 
