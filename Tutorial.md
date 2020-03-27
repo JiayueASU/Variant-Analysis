@@ -53,6 +53,8 @@ After the execution, we could obtain paired data for next step.
 Download Page:
 <https://sourceforge.net/projects/bio-bwa/files/>
 
+Tutorial: <https://www.jianshu.com/p/1552cc6ac3be>
+
 Unzip bwa-0.7.17.tar.bz2: `tar -jxvf bwa-0.7.17.tar.bz2`
 
 Install bwa:`cd bwa-0.7.17` `make`
@@ -61,5 +63,19 @@ After `make`, execute bwa file: `./bwa`
 
 Set environmental variables: `export PATH=$PATH:/data/notebook/Jerry/Tools/bwa-0.7.17/`
 
+Create a new folder for mm10.fasta: `cd /data/notebook/Jerry/Test/Reference`
 
+`mkdir mm10` `cd mm10`
+
+Download mm10.fast: `wget ftp://igenome:G3nom3s4u@ussd-ftp.illumina.com/Mus_musculus/UCSC/mm10/Mus_musculus_UCSC_mm10.tar.gz`
+
+cd to: `/data/notebook/Jerry/Test/Reference/mm10/Mus_musculus/UCSC/mm10/Sequence/BWAIndex`
+
+Copy genome.fa to the reference folder: `cp genome.fa /data/notebook/Jerry/Test/Reference/`
+
+Generate index sequence: `bwa index genome.fa`
+
+After 613 iterations, five new files are generated: genome.fa.amb, genome.fa.ann, genome.fa.bwt, genome.fa.pac, and genome.fa.sa.
+
+Use BWA-mem to obtain .sam file: `bwa mem genome.fa Output_V300035135_L03_531_1_paired.clean.fq.gz Output_V300035135_L03_531_2_paired.clean.fq.gz > aln-pe.sam`
 
