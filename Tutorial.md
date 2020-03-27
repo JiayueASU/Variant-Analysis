@@ -91,5 +91,5 @@ First download GATK: `cd /data/notebook/Jerry/Tools`
 
 `wget https://github.com/broadinstitute/gatk/releases/download/4.0.2.1/gatk-4.0.2.1.zip`
 
-Then unzip gate-4.0.2.1.zip: `unzip gatk-4.0.2.1`
+Then unzip gatk-4.0.2.1.zip: `unzip gatk-4.0.2.1`
 
