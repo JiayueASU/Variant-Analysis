@@ -65,17 +65,31 @@ Set environmental variables: `export PATH=$PATH:/data/notebook/Jerry/Tools/bwa-0
 
 Create a new folder for mm10.fasta: `cd /data/notebook/Jerry/Test/Reference`
 
+Create a new folder at Output: `mkdir bwa_index`
+
 `mkdir mm10` `cd mm10`
 
 Download mm10.fast: `wget ftp://igenome:G3nom3s4u@ussd-ftp.illumina.com/Mus_musculus/UCSC/mm10/Mus_musculus_UCSC_mm10.tar.gz`
 
 cd to: `/data/notebook/Jerry/Test/Reference/mm10/Mus_musculus/UCSC/mm10/Sequence/BWAIndex`
 
-Copy genome.fa to the reference folder: `cp genome.fa /data/notebook/Jerry/Test/Reference/`
+Copy genome.fa to the Output folder: `cp genome.fa /data/notebook/Jerry/Test/Output/bwa_index/`
 
 Generate index sequence: `bwa index genome.fa`
 
 After 613 iterations, five new files are generated: genome.fa.amb, genome.fa.ann, genome.fa.bwt, genome.fa.pac, and genome.fa.sa.
 
 Use BWA-mem to obtain .sam file: `bwa mem genome.fa Output_V300035135_L03_531_1_paired.clean.fq.gz Output_V300035135_L03_531_2_paired.clean.fq.gz > aln-pe.sam`
+
+
+
+## Variant Identification
+
+Tutorial: <http://www.bio-info-trainee.com/3144.html>
+
+First download GATK: `cd /data/notebook/Jerry/Tools`
+
+`wget https://github.com/broadinstitute/gatk/releases/download/4.0.2.1/gatk-4.0.2.1.zip`
+
+Then unzip gate-4.0.2.1.zip: `unzip gatk-4.0.2.1`
 
