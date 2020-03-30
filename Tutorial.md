@@ -79,7 +79,7 @@ Generate index sequence: `bwa index genome.fa`
 
 After 613 iterations, five new files are generated: genome.fa.amb, genome.fa.ann, genome.fa.bwt, genome.fa.pac, and genome.fa.sa.
 
-Use BWA-mem to obtain .sam file: `bwa mem genome.fa Output_V300035135_L03_531_1_paired.clean.fq.gz Output_V300035135_L03_531_2_paired.clean.fq.gz > aln-pe.sam`
+Use BWA-mem to obtain .sam file: `bwa mem genome.fa Output_V300035135_L03_531_1.clean.fq.gz Output_V300035135_L03_531_2.clean.fq.gz > aln-pe.sam`
 
 
 
