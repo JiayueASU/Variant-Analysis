@@ -115,7 +115,9 @@ Then unzip samtools-1.9: `tar jxvf samtools-1.9.tar.bz2`
 
 Set Configure: `./configure --prefix=/data/notebook/Jerry/Tools/samtools-1.9`
 
+If it shows a bug like: "fatal error: curses.h: No such file or directory", please install libncurses5-dev (ubuntu) or curse-devel (centos).
+
 Then `make` `make install`
 
-
+If it shows a bug on "htslib-1.9", install this package.
 
