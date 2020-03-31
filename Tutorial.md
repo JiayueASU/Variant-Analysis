@@ -113,7 +113,9 @@ First download samtools: `wget -c https://github.com/samtools/samtools/releases/
 
 Then unzip samtools-1.9: `tar jxvf samtools-1.9.tar.bz2`
 
+Set Configure: `./configure --prefix=/data/notebook/Jerry/Tools/samtools-1.9`
 
+Then `make` `make install`
 
 
 
