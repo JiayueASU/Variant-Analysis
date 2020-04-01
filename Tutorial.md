@@ -93,20 +93,6 @@ After 8489.8 sec, aln-pe.sam file is generated.
 
 ## Variant Identification
 
-### GATK
-
-Tutorial: <http://www.bio-info-trainee.com/3144.html>
-
-First download GATK: `cd /data/notebook/Jerry/Tools`
-
-`wget https://github.com/broadinstitute/gatk/releases/download/4.0.2.1/gatk-4.0.2.1.zip`
-
-Then unzip gatk-4.0.2.1.zip: `unzip gatk-4.0.2.1`
-
-Set environmental variables: `echo export PATH=$PATH:/data/notebook/Jerry/Tools/gatk-[4.0.2.1](4.0.2.1) >> ~/.bashrc ` `source ~/.bashrc`
-
-
-
 ### Samtools
 
 First download samtools: `wget -c https://github.com/samtools/samtools/releases/download/1.9/samtools-1.9.tar.bz2`
@@ -120,4 +106,32 @@ If it shows a bug like: "fatal error: curses.h: No such file or directory", plea
 Then `make` `make install`
 
 If it shows a bug on "htslib-1.9", install this package.
+
+Generate a new folder at Output: `mkdir samtools_bam`
+
+Copy the generated .sam file to samtools_bam: `cp aln-pe.sam ~/samtools_bam`
+
+Generate .bam file (15 min): `samtools view -bS aln-pe.sam > aln-pe.bam`
+
+Sort the generated .bam file (25 min): `samtools sort -n aln-pe.bam -o aln-pe.sort.bam`
+
+### GATK
+
+Tutorial: <http://www.bio-info-trainee.com/3144.html>
+
+First download GATK: `cd /data/notebook/Jerry/Tools`
+
+`wget https://github.com/broadinstitute/gatk/releases/download/4.0.2.1/gatk-4.0.2.1.zip`
+
+Then unzip gatk-4.0.2.1.zip: `unzip gatk-4.0.2.1`
+
+Set environmental variables: `echo export PATH=$PATH:/data/notebook/Jerry/Tools/gatk-[4.0.2.1](4.0.2.1) >> ~/.bashrc ` `source ~/.bashrc`
+
+Use GATK to mark duplicates (18 min): `java -jar gatk-package-4.0.2.1-local.jar MarkDuplicates \-I /data/notebook/Jerry/Test/Output/samtools_bam/aln-pe.sort.bam -O aln-pe.sort.markdup.bam -M aln-pe.sort.markdup.bam.metrics`
+
+Sort the generated .bam file again: `samtools sort aln-pe.sort.markdup.bam -o aln-pe.sort1.markdup.bam`
+
+Create index for sorted marked .bam file to generate aln-pe.sort1.markdup.bam.bai: `samtools index aln-pe.sort1.markdup.bam`
+
+Genreate a new folder at Reference, named GATK. Then download .vcf files from: `wget ftp://ftp.ncbi.nih.gov/snp/organisms/archive/mouse_10090/VCF/00-All.vcf.gz`
 
