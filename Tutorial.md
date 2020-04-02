@@ -135,3 +135,9 @@ Create index for sorted marked .bam file to generate aln-pe.sort1.markdup.bam.ba
 
 Genreate a new folder at Reference, named GATK. Then download .vcf files from: `wget ftp://ftp.ncbi.nih.gov/snp/organisms/archive/mouse_10090/VCF/00-All.vcf.gz`
 
+Switch to /data/notebook/Jerry/Test/Output/bwa_index, generate .fai file: `samtools faidx genome.fa`
+
+Generate .dict file based on genome.fa: `samtools dict genome.fa > genome.dict`
+
+Do recalibration at the folder of gate: `java -jar gatk-package-4.0.2.1-local.jar BaseRecalibrator \-R /data/notebook/Jerry/Test/Output/bwa_index/genome.fa \-I /data/notebook/Jerry/Test/Output/samtools_bam/aln-pe.sort1.markdup.bam \--known-sites HardFilter \-O aln-pe.sort1.markdup.recal`
+
