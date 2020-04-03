@@ -139,5 +139,7 @@ Switch to /data/notebook/Jerry/Test/Output/bwa_index, generate .fai file: `samto
 
 Generate .dict file based on genome.fa: `samtools dict genome.fa > genome.dict`
 
-Do recalibration at the folder of gate: `java -jar gatk-package-4.0.2.1-local.jar BaseRecalibrator \-R /data/notebook/Jerry/Test/Output/bwa_index/genome.fa \-I /data/notebook/Jerry/Test/Output/samtools_bam/aln-pe.sort1.markdup.bam \--known-sites HardFilter \-O aln-pe.sort1.markdup.recal`
+Do recalibration at the folder of gate: `java -jar gatk-package-4.0.2.1-local.jar BaseRecalibrator \-R /data/notebook/Jerry/Test/Output/bwa_index/genome.fa \-I /data/notebook/Jerry/Test/Output/samtools_bam/aln-pe.sort1.markdup.bam \--known-sites /data/notebook/Jerry/Test/Reference/GATK/00-All.vcf \-O aln-pe.sort1.markdup.recal`
+
+Use IndexFeatureFile to generate vcd.idx file (This step solves the problem >= 1 but = 0): `java -jar gatk-package-4.0.2.1-local.jar IndexFeatureFile -F /data/notebook/Jerry/Test/Reference/GATK/00-All.vcf `
 
