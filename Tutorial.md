@@ -89,7 +89,7 @@ After 613 iterations, five new files are generated: genome.fa.amb, genome.fa.ann
 
 Use BWA-mem to obtain .sam file: `bwa mem genome.fa /data/notebook/Jerry/Test/Input/Data20200323/V300035135_L03_531_1.clean.fq.gz /data/notebook/Jerry/Test/Input/Data20200323/V300035135_L03_531_2.clean.fq.gz > aln-pe.sam`
 
-After 8489.8 sec, aln-pe.sam file is generated.
+After 11142.574 sec, aln-pe.sam file is generated.
 
 ## Variant Identification
 
@@ -139,7 +139,12 @@ Switch to /data/notebook/Jerry/Test/Output/bwa_index, generate .fai file: `samto
 
 Generate .dict file based on genome.fa: `samtools dict genome.fa > genome.dict`
 
-Do recalibration at the folder of gate: `java -jar gatk-package-4.0.2.1-local.jar BaseRecalibrator \-R /data/notebook/Jerry/Test/Output/bwa_index/genome.fa \-I /data/notebook/Jerry/Test/Output/samtools_bam/aln-pe.sort1.markdup.bam \--known-sites /data/notebook/Jerry/Test/Reference/GATK/00-All.vcf \-O aln-pe.sort1.markdup.recal`
+Do recalibration at the folder of gate: `java -jar gatk-package-4.0.2.1-local.jar BaseRecalibrator -R /data/notebook/Jerry/Test/Output/bwa_index/chromosomes.fa -I /data/notebook/Jerry/Test/Output/samtools_bam/aln-pe-0406-sort1-markdup.bam -O /data/notebook/Jerry/Test/Output/samtools_bam/aln-pe-0406-sort1-markdup.recal.table --known-sites /data/notebook/Jerry/Test/Reference/mm10SNP/mgp.v3.snps.rsIDdbSNPv137.vcf --known-sites /data/notebook/Jerry/Test/Reference/mm10SNP/mgp.v3.indels.rsIDdbSNPv137.vcf`
 
 Use IndexFeatureFile to generate vcd.idx file (This step solves the problem >= 1 but = 0): `java -jar gatk-package-4.0.2.1-local.jar IndexFeatureFile -F /data/notebook/Jerry/Test/Reference/GATK/00-All.vcf `
 
+Check out this tutorial: <https://www.jianshu.com/p/fe0c876563b0>
+
+Check out the detail on .bam file: `samtools view -H aln-pe-0406-sort1-markdup.bam`
+
+Merge all the .fa file at Chromosomes to one .fa file: `cat chr1.fa chr2.fa chr3.fa chr4.fa chr5.fa chr6.fa chr7.fa chr8.fa chr9.fa chr10.fa chr11.fa chr12.fa chr13.fa chr14.fa chr15.fa chr16.fa chr17.fa chr18.fa chr19.fa chrM.fa chrX.fa chrY.fa > chromosomes.fa`
