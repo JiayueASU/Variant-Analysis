@@ -22,6 +22,7 @@ Done
 
 Explanation: 
 -o --outdir     
+
 > Create all output files in the specified output directory. Please note that this directory must exist as the program will not create it. If this option is not set then the output file for each sequence file is created in the same directory as the sequence file which was processed.
 
 -t --threads    
@@ -29,6 +30,8 @@ Explanation:
 
 After the execution, an .html file will be generated. This file is the fastqc report of the associate fq data. The explanation of this report can be found at: 
 <http://www.bio-info-trainee.com/95.html>
+
+<img src="/Users/jerrylee/Dropbox/GitHub/Variant-Analysis/1.png" alt="1" style="zoom:33%;" />
 
 ### Trimmomatic
 Download Page: <http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.39.zip>
@@ -53,6 +56,8 @@ Output_unpaired: Removed adapters, leading low quality, and trailing low quality
 Usage of Trimmomatic (Single End): `java -jar trimmomatic-0.35.jar SE -phred33 input.fq.gz output.fq.gz ILLUMINACLIP:TruSeq3-SE:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36`
 
 After the execution, we could obtain paired data for next step.
+
+<img src="/Users/jerrylee/Dropbox/GitHub/Variant-Analysis/2.png" alt="2" style="zoom:33%;" />
 
 ## Read Alignment
 ### BWA-mem
@@ -85,11 +90,17 @@ Copy genome.fa to the Output folder: `cp genome.fa /data/notebook/Jerry/Test/Out
 
 Generate index sequence: `bwa index genome.fa`
 
+<img src="/Users/jerrylee/Dropbox/GitHub/Variant-Analysis/3.png" alt="3" style="zoom:33%;" />
+
 After 613 iterations, five new files are generated: genome.fa.amb, genome.fa.ann, genome.fa.bwt, genome.fa.pac, and genome.fa.sa.
 
 Use BWA-mem to obtain .sam file: `bwa mem genome.fa /data/notebook/Jerry/Test/Input/Data20200323/V300035135_L03_531_1.clean.fq.gz /data/notebook/Jerry/Test/Input/Data20200323/V300035135_L03_531_2.clean.fq.gz > aln-pe.sam`
 
+<img src="/Users/jerrylee/Dropbox/GitHub/Variant-Analysis/4. BWA_mem.png" alt="4. BWA_mem" style="zoom:33%;" />
+
 After 11142.574 sec, aln-pe.sam file is generated.
+
+<img src="/Users/jerrylee/Dropbox/GitHub/Variant-Analysis/5. AfterBWA.png" alt="5. AfterBWA" style="zoom:33%;" />
 
 ## Variant Identification
 
@@ -114,6 +125,8 @@ Copy the generated .sam file to samtools_bam: `cp aln-pe.sam ~/samtools_bam`
 Generate .bam file (15 min): `samtools view -bS aln-pe.sam > aln-pe.bam`
 
 Sort the generated .bam file (25 min): `samtools sort -n aln-pe.bam -o aln-pe.sort.bam`
+
+<img src="/Users/jerrylee/Dropbox/GitHub/Variant-Analysis/8.samtools_sort.png" alt="8.samtools_sort" style="zoom:33%;" />
 
 ### GATK
 
